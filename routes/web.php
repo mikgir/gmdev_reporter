@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\HomeController;
+use App\View\Components\Form\Customer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +18,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
+Route::get('/news', [HomeController::class, 'showAll'])
+    ->name('news');
+Route::get('/news/{id}', [HomeController::class, 'show'])
+    ->where('id', '\d+')
+    ->name('news.show');
+
+
+//Admin routes
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('admin', AdminController::class)
+        ->name('index');
+    Route::resource('customer', Customer::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('news', NewsController::class);
 });
