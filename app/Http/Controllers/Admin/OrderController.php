@@ -7,23 +7,23 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
-class NewsController extends Controller
+
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Application|Factory|View
      */
-    public function index(): View|Factory|Application
+    public function index()
     {
-        $news = $this->getNews();
-
-        return view('admin.news.index', [
-            'newsList' => $news
-        ]);
+        return view('admin.order.index');
     }
 
     /**
@@ -33,19 +33,21 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('admin.news.create');
+        return view('admin.order.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function store(Request $request): JsonResponse
     {
-        $content= $request->only('id', 'title', 'image', 'description');
+        $content = $request->only('id','name', 'phone', 'email', 'order');
+
         return response()->json($content, 201);
+//
     }
 
 //    /**
@@ -58,24 +60,24 @@ class NewsController extends Controller
 //    {
 //        //
 //    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Application|Factory|View
-     */
-    public function edit($id): View|Factory|Application
-    {
-        return view('admin.news.edit');
-    }
-
+//
+//    /**
+//     * Show the form for editing the specified resource.
+//     *
+//     * @param  int  $id
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function edit($id)
+//    {
+//        //
+//    }
+//
 //    /**
 //     * Update the specified resource in storage.
 //     *
-//     * @param Request $request
+//     * @param  \Illuminate\Http\Request  $request
 //     * @param  int  $id
-//     * @return Response
+//     * @return \Illuminate\Http\Response
 //     */
 //    public function update(Request $request, $id)
 //    {
@@ -86,7 +88,7 @@ class NewsController extends Controller
 //     * Remove the specified resource from storage.
 //     *
 //     * @param  int  $id
-//     * @return Response
+//     * @return \Illuminate\Http\Response
 //     */
 //    public function destroy($id)
 //    {

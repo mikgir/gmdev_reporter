@@ -80,7 +80,7 @@
                            aria-expanded="false">Главная</a>
                     </li>
                     <li><a href="#" title="About Us">О нас</a></li>
-                    <li><a href="#" title="About Author">Авторы</a></li>
+                    <li><a href="{{ route('author') }}" title="About Author">Авторы</a></li>
                     <li class="dropdown">
                         <a href="{{ route('news') }}" class="dropdown-toggle" role="button" aria-haspopup="true"
                            aria-expanded="false">Новости</a>
@@ -104,6 +104,5 @@
             </div>
         </div><!-- Container /- -->
     </nav><!-- Ownavigation /- -->
-
 </header><!-- Header Section /- -->
 

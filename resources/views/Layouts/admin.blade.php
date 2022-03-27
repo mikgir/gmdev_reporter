@@ -67,6 +67,13 @@
                     <div class="menu-title">Новости</div>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('admin.order.index') }}">
+                    <div class="parent-icon"><i class="bx bx-list-ol"></i>
+                    </div>
+                    <div class="menu-title">Заказы</div>
+                </a>
+            </li>
         </ul>
         <!--end navigation-->
     </div>

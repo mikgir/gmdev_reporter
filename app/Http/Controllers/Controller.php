@@ -27,7 +27,7 @@ class Controller extends BaseController
                 'id' => $id,
                 'title' => $faker->jobTitle(),
                 'author' => $faker->userName(),
-                'image' => $faker->imageUrl(400, 350),
+                'image' => $faker->imageUrl(376, 299),
                 'status' => $statusList[mt_rand(0, 2)],
                 'description' => $faker->text(100)
             ];
@@ -40,7 +40,7 @@ class Controller extends BaseController
                 'id' => $id,
                 'title' => $faker->jobTitle(),
                 'author' => $faker->userName(),
-                'image' => $faker->imageUrl(400, 350),
+                'image' => $faker->imageUrl(376, 299),
                 'status' => $statusList[mt_rand(0, 2)],
                 'description' => $faker->text(100)
             ];
@@ -63,7 +63,7 @@ class Controller extends BaseController
                 'id' => $id,
                 'title' => $fakerSl->jobTitle(),
                 'author' => $fakerSl->userName(),
-                'image' => $fakerSl->imageUrl(610, 504),
+                'image' => $fakerSl->imageUrl(620, 519),
                 'status' => $statusList[mt_rand(0, 2)],
                 'description' => $fakerSl->text(100)
             ];
@@ -76,7 +76,7 @@ class Controller extends BaseController
                 'id' => $id,
                 'title' => $fakerSl->jobTitle(),
                 'author' => $fakerSl->userName(),
-                'image' => $fakerSl->imageUrl(610, 504),
+                'image' => $fakerSl->imageUrl(620, 519),
                 'status' => $statusList[mt_rand(0, 2)],
                 'description' => $fakerSl->text(100)
             ];
@@ -99,7 +99,7 @@ class Controller extends BaseController
                 'id' => $id,
                 'title' => $fakerTh->jobTitle(),
                 'author' => $fakerTh->userName(),
-                'image' => $fakerTh->imageUrl(295, 250),
+                'image' => $fakerTh->imageUrl(270, 257),
                 'status' => $statusList[mt_rand(0, 2)],
                 'description' => $fakerTh->text(100)
             ];
@@ -112,12 +112,45 @@ class Controller extends BaseController
                 'id' => $id,
                 'title' => $fakerTh->jobTitle(),
                 'author' => $fakerTh->userName(),
-                'image' => $fakerTh->imageUrl(295, 250),
+                'image' => $fakerTh->imageUrl(270, 257),
                 'status' => $statusList[mt_rand(0, 2)],
                 'description' => $fakerTh->text(100)
             ];
         }
 
         return $dataTh;
+    }
+
+    /**
+     * @param int|null $id
+     * @return array
+     */
+    #[ArrayShape(['id' => "int|mixed", 'name' => "string", 'avatar' => "string", 'image' => 'string', 'description' => "string"])]
+    public function getAuthor(?int $id = null): array
+    {
+        $fakerAuth = Factory::create();
+        if ($id) {
+            return [
+                'id' => $id,
+                'name' => $fakerAuth->userName(),
+                'avatar' => $fakerAuth->imageUrl(200, 200),
+                'image' => $fakerAuth->imageUrl(450, 400),
+                'description' => $fakerAuth->text(200)
+            ];
+        }
+
+        $dataAuth = [];
+        for ($i = 0; $i < 4; $i++) {
+            $id = $i + 1;
+            $dataAuth[] = [
+                'id' => $id,
+                'name' => $fakerAuth->userName(),
+                'avatar' => $fakerAuth->imageUrl(200, 200),
+                'image' => $fakerAuth->imageUrl(450, 400),
+                'description' => $fakerAuth->text(200)
+            ];
+        }
+
+        return $dataAuth;
     }
 }

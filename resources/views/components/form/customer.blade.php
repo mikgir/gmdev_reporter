@@ -33,7 +33,7 @@
                     <div class="input-group-prepend"><span class="input-group-text" style="width: 150px"
                                                            id="basic-addon1">Email</span>
                     </div>
-                    <input type="email" class="form-control" placeholder="email" aria-label="name"
+                    <input type="email" class="form-control" placeholder="email" aria-label="email"
                            aria-describedby="basic-addon1" name="email" id="email"
                            value="{{ old('email') }}">
                 </div>

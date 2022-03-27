@@ -14,7 +14,7 @@
     <link href="{{ asset('css/plugins.css') }}" rel="stylesheet">
     <link href="{{ asset('css/elements.css') }}" rel="stylesheet">
     <link href="{{ asset('css/rtl.css') }}" rel="stylesheet">
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">--}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
 </head>
 <body>

@@ -31,7 +31,7 @@
 
                             <!-- About Author -->
                             <div class="about-author-box">
-                                <h3>About Author</h3>
+                                <h3>Об авторе</h3>
                                 <div class="author">
                                     <i><img src="" alt="Author"/></i>
                                     <h4>Tommy Walker</h4>
@@ -110,82 +110,11 @@
                         {{--                        </ol><!-- .comment-list -->--}}
                         <!-- Comment Form -->
                             <div id="respond" class="comment-respond">
-                                <h2 id="reply-title" class="comment-reply-title">Leave a comment</h2>
-                                <form method="post" id="commentform" class="comment-form">
-                                    <p class="comment-form-author">
-                                        <input id="author" name="author" placeholder="Name *" required="required"
-                                               type="text"/>
-                                    </p>
-                                    <p class="comment-form-email">
-                                        <input id="email" name="email" placeholder="Your@email.com *"
-                                               required="required"
-                                               type="email"/>
-                                    </p>
-                                    <p class="comment-form-comment">
-                                    <textarea id="comment" placeholder="Your Comment" name="comment" rows="5"
-                                              required="required"></textarea>
-                                    </p>
-                                    <p class="form-submit">
-                                        <input name="submit" class="submit" value="Post Comment" type="submit"/>
-                                    </p>
-                                </form>
+                                <h2 id="reply-title" class="comment-reply-title">Оставьте комментарий</h2>
+                                <x-form.comment action="{{ route('admin.news.store') }}" method="post"></x-form.comment>
                             </div><!-- Comment Form /- -->
                         </div><!-- Comment Area /- -->
-
                     </div><!-- Content Area /- -->
-
-                    <!-- Widget Area -->
-                {{--                <div class="col-md-4 col-sm-6 col-xs-6 widget-area">--}}
-                {{--                    <!-- Widget Recent Post -->--}}
-                {{--                    <aside class="widget widget_latestposts">--}}
-                {{--                        <h3 class="widget-title">Recent Posts</h3>--}}
-                {{--                        <div class="latest-content-box">--}}
-                {{--                            <div class="latest-content color-5">--}}
-                {{--                                <a href="#" title="Recent Posts"><i><img src="assets/images/wd-rcnt-1.jpg"--}}
-                {{--                                                                         class="wp-post-image" alt="blog-1"></i></a>--}}
-                {{--                                <span><a href="#" title="POLITICS">POLITICS</a> <a href="#">22 OCT 2014</a></span>--}}
-                {{--                                <h5><a title="Qaim says prominent people arrested" href="#">Qaim says prominent people--}}
-                {{--                                        arrested </a></h5>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="latest-content color-2">--}}
-                {{--                                <a href="#" title="Recent Posts"><i><img src="assets/images/wd-rcnt-2.jpg"--}}
-                {{--                                                                         class="wp-post-image" alt="blog-1"></i></a>--}}
-                {{--                                <span><a href="#" title="SPORTS">SPORTS</a> <a href="#">22 OCT 2014</a></span>--}}
-                {{--                                <h5><a title="Way now cleared for Australian" href="#">Way now cleared for--}}
-                {{--                                        Australian </a></h5>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="latest-content color-3">--}}
-                {{--                                <a href="#" title="Recent Posts"><i><img src="assets/images/wd-rcnt-3.jpg"--}}
-                {{--                                                                         class="wp-post-image" alt="blog-3"/></i></a>--}}
-                {{--                                <span><a href="#" title="BUSINESS">BUSINESS</a> <a href="#">22 OCT 2014</a></span>--}}
-                {{--                                <h5><a title="EU exit would leave Britain with zero" href="#">EU exit would leave--}}
-                {{--                                        Britain with zero</a></h5>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="see-more"><a href="#" title="SEE MORE POST">SEE MORE POST</a></div>--}}
-                {{--                    </aside><!-- Widget Recent Post -->--}}
-
-                {{--                    <!-- Popular Video -->--}}
-                {{--                    <aside class="widget widget_video">--}}
-                {{--                        <h3 class="widget-title">POPULAR VIDEOS</h3>--}}
-                {{--                        <div class="video-block">--}}
-                {{--                            <div class="video-post">--}}
-                {{--                                <a href="#"><img src="assets/images/popular-video1.jpg" alt="Popular Video"/></a>--}}
-                {{--                                <h5><a href="#"><i class="fa fa-play"></i>Qaim says prominent people arrested </a></h5>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="video-post">--}}
-                {{--                                <a href="#"><img src="assets/images/popular-video2.jpg" alt="Popular Video"/></a>--}}
-                {{--                                <h5><a href="#"><i class="fa fa-play"></i>Way now cleared for Australian </a></h5>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="video-post">--}}
-                {{--                                <a href="#"><img src="assets/images/popular-video3.jpg" alt="Popular Video"/></a>--}}
-                {{--                                <h5><a href="#"><i class="fa fa-play"></i>Way now cleared for Australian </a></h5>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="see-more"><a href="#" title="SEE MORE Video">SEE MORE Video</a></div>--}}
-                {{--                    </aside><!-- Popular Video /- -->--}}
-                {{--                </div>--}}
-                <!-- Widget Area /- -->
                 </div>
             </div><!-- Container /- -->
         </div><!-- Single Post /- -->
