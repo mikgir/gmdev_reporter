@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
+    private $table = 'news';
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +22,7 @@ class NewsController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $news = $this->getNews();
+        $news = DB::select('SELECT id, title, category_id, image, big_image, thumb_image, author, description FROM news');
 
         return view('admin.news.index', [
             'newsList' => $news

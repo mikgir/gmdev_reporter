@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -18,7 +20,11 @@ class CategoryController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        return view('admin.categories.index');
+        $category=DB::select('SELECT id, title, description FROM categories');
+
+        return view('admin.categories.index', [
+            'categories'=>$category
+        ]);
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title'){{ $news['title'] }}@endsection
+@section('title'){{ $news->title }}@endsection
 @section('content')
     <main class="site-main">
         <!-- Single Post -->
@@ -11,10 +11,10 @@
                     <div class="col-md-8 col-sm-6 col-xs-6 content-area">
                         <article class="type-post color-3">
                             <div class="entry-cover">
-                                <img src="{{ $news['image'] }}" alt="Post" style="width: 100%; height: auto"/>
+                                <img src="{{ $news->image }}" alt="Post" style="width: 100%; height: auto"/>
                                 <div class="entry-header">
                                     <div class="post-category"><a href="#" title="Business">Business</a></div>
-                                    <h3 class="entry-title">{{ $news['title'] }}</h3>
+                                    <h3 class="entry-title">{{ $news->title}}</h3>
                                     <div class="entry-footer">
                                         <span class="post-date"><a href="#">{{ date('Y-m-d') }}</a></span>
                                         <span class="post-like"><i class="fa fa-heart-o"></i><a href="#">356</a></span>
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="entry-content">
-                                <p>{{ $news['description'] }}</p>
+                                <p>{{ $news->description }}</p>
                                 <blockquote>
                                     <p></p>
                                 </blockquote>
