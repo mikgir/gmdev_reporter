@@ -55,23 +55,23 @@
             <li class="menu-label">МЕНЮ</li>
             <li>
                 <a href="{{ route('admin.categories.index') }}">
-                    <div class="parent-icon"><i class="bx bx-book"></i>
+                    <div class="parent-icon"><i class="bx bx-collection"></i>
                     </div>
                     <div class="menu-title">Категории</div>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.news.index') }}">
-                    <div class="parent-icon"><i class="bx bx-list-ol"></i>
+                    <div class="parent-icon"><i class="bx bx-news"></i>
                     </div>
                     <div class="menu-title">Новости</div>
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.order.index') }}">
-                    <div class="parent-icon"><i class="bx bx-list-ol"></i>
+                <a href="#">
+                    <div class="parent-icon"><i class="bx bx-user-circle"></i>
                     </div>
-                    <div class="menu-title">Заказы</div>
+                    <div class="menu-title">Пользователи</div>
                 </a>
             </li>
         </ul>

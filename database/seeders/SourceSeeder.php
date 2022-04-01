@@ -27,7 +27,8 @@ class SourceSeeder extends Seeder
             $data[] = [
                 'category_id' => mt_rand(1, 5),
                 'source' => $faker->sentence(rand(3, 5)),
-                'link'=>$faker->url()
+                'link' => $faker->url(),
+                'status' => 'ACTIVE'
             ];
         }
         return $data;

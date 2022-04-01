@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
-    private $table = 'news';
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +21,8 @@ class NewsController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $news = DB::select('SELECT id, title, category_id, image, big_image, thumb_image, author, description FROM news');
-
         return view('admin.news.index', [
-            'newsList' => $news
+            'newsList' => News::with('category')->paginate(5),
         ]);
     }
 
@@ -34,21 +31,29 @@ class NewsController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(): View|Factory|Application
     {
-        return view('admin.news.create');
+        return view('admin.news.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return JsonResponse
+     * @return RedirectResponse
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): RedirectResponse
     {
-        $content= $request->only('id', 'title', 'image', 'description');
-        return response()->json($content, 201);
+        $news = News::create($request->only(['category_id', 'title', 'image',
+            'author', 'status', 'description']));
+        if ($news) {
+            return redirect()->route('admin.news.index')
+                ->with('success', 'Новость успешно создана');
+        }
+        return back()->with('error', 'Не удалось создать новость');
+
     }
 
 //    /**
@@ -65,34 +70,51 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param News $news
      * @return Application|Factory|View
      */
-    public function edit($id): View|Factory|Application
+    public function edit(News $news): View|Factory|Application
     {
-        return view('admin.news.edit');
+        return view('admin.news.edit', [
+            'news' => $news,
+            'categories' => Category::all()
+        ]);
     }
 
-//    /**
-//     * Update the specified resource in storage.
-//     *
-//     * @param Request $request
-//     * @param  int  $id
-//     * @return Response
-//     */
-//    public function update(Request $request, $id)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  int  $id
-//     * @return Response
-//     */
-//    public function destroy($id)
-//    {
-//        //
-//    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param News $news
+     * @return RedirectResponse
+     */
+    public function update(Request $request, News $news): RedirectResponse
+    {
+        $status = $news->fill($request->only(['category_id', 'title',
+            'image', 'author', 'status', 'description']))
+            ->save();
+        if ($status) {
+            return redirect()->route('admin.news.index')
+                ->with('success', 'Новость успешно обновлена');
+        }
+        return back()->with('error', 'Не удалось обновить новость');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param News $news
+     * @return RedirectResponse
+     * @throws \Throwable
+     */
+    public function destroy(News $news): RedirectResponse
+    {
+        $status = $news->delete();
+        if ($status) {
+            return redirect()->route('admin.news.index')
+                ->with('success', 'Новость успешно удалена');
+        }
+        return redirect()->route('admin.news.index')
+            ->with('error', 'Не удалось удалить новость');
+    }
 }

@@ -24,10 +24,13 @@ class Alert extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return View|\Closure|string
+     * @return View|Closure|string
      */
     public function render(): View|string|\Closure
     {
-        return view('components.alert');
+        return view('components.alert', [
+            'type' => $this->type,
+            'message' => $this->message
+        ]);
     }
 }

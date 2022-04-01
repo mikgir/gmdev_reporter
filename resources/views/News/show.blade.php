@@ -22,11 +22,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="entry-content">
-                                <p>{{ $news->description }}</p>
-                                <blockquote>
-                                    <p></p>
-                                </blockquote>
+                            <div class="content-area">
+                                    <p class="font-35">{!! $news->description !!}</p>
                             </div>
 
                             <!-- About Author -->

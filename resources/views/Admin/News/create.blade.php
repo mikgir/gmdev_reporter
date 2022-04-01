@@ -19,17 +19,42 @@
                 <h4 class="mb-0">Добавить новость</h4>
             </div>
             <hr/>
-            @if( $errors )
-                @foreach( $errors->all() as $error)
-                    <x-alert type="danger" :message="$error"></x-alert>
+            @if( Session::has('success'))
+                <x-alert type="success" message="{{ session('success') }}"></x-alert>
+            @endif
+            @if( Session::has('error'))
+                <x-alert type="danger" message="{{ session('error') }}"></x-alert>
+            @endif
+            @if( $errors->any() )
+                @foreach( $errors as $error )
+                    <x-alert type="error" message="{{ $error }}"></x-alert>
                 @endforeach
             @endif
-
             <form action="{{ route('admin.news.store') }}" method="post">
                 @csrf
+                <div class="input-group-prepend mt-3 d-flex">
+                    <label class="input-group" for="status">
+                        <div class="input-group-prepend"><span class="input-group-text"
+                                                               style="width: 150px">Категория</span>
+                        </div>
+                        <select class="form-control" name="category_id" id="category_id">
+                            @foreach( $categories as $category)
+                            <option value="{{ $category->id }}" @if( $category->id === old('category_id')) selected @endif>{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+
+                </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend"><span class="input-group-text" style="width: 150px"
-                                                           id="basic-addon1">Титул</span>
+                                                           id="basic-addon1">Изображение</span>
+                    </div>
+                    <input type="file" class="form-control" aria-label="image"
+                           aria-describedby="basic-addon1" name="image" id="image" value="{{ old('image') }}">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend"><span class="input-group-text" style="width: 150px"
+                                                           id="basic-addon1">Заголовок</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Наименование" aria-label="title"
                            aria-describedby="basic-addon1" name="title" id="title" value="{{ old('title') }}">

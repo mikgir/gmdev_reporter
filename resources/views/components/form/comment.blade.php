@@ -17,7 +17,7 @@
                    type="email"/>
         </p>
         <p class="comment-form-comment">
-                                    <textarea id="comment" placeholder="Ваш комментарий" name="comment" rows="5"
+             <textarea id="comment" placeholder="Ваш комментарий" name="comment" rows="5"
                                               required="required"></textarea>
         </p>
         <p class="form-submit">

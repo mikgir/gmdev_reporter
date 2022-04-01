@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\News;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,9 +17,9 @@ class HomeController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $news = DB::select('SELECT id, title, category_id, image, big_image, thumb_image, author, description FROM news');
         return view('home', [
-            'newsList' => $news
+            'newsList' => News::with('category')->paginate(0),
+            'categories' => Category::with('news')->paginate(0)
         ]);
     }
 
@@ -26,24 +28,20 @@ class HomeController extends Controller
      */
     public function showAll(): Factory|View|Application
     {
-        $news = DB::select('SELECT id, title, category_id, image, big_image, thumb_image, author, description FROM news');
-
         return view('news.news', [
-            'newsList' => $news
+            'categories' => Category::with('news')->paginate(1),
         ]);
 
     }
 
     /**
-     * @param int $id
+     * @param $id
      * @return Application|Factory|View
      */
-    public function show(int $id): View|Factory|Application
+    public function show($id): View|Factory|Application
     {
-        $news = DB::select('SELECT id, title, category_id, image, big_image, thumb_image, author, description FROM news WHERE id = :id', ['id'=> $id]);
-
         return view('news.show', [
-            'news' => $news[0]
+            'news' => News::findOrFail($id)
         ]);
     }
 }
