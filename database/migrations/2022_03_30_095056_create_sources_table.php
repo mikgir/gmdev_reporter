@@ -14,9 +14,6 @@ return new class extends Migration {
     {
         Schema::create('sources', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')
-                ->constrained('categories')
-                ->cascadeOnDelete();
             $table->string('source', 255);
             $table->string('link', 500);
             $table->timestamps();

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Source extends Model
 {
@@ -21,9 +22,9 @@ class Source extends Model
 
 //    Relations
 
-    public function category(): BelongsTo
+    public function news(): BelongsToMany
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(News::class);
     }
 
 }

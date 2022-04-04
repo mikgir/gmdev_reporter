@@ -19,6 +19,8 @@ class HomeController extends Controller
     {
         return view('home', [
             'newsList' => News::with('category')->paginate(0),
+            'thumbNews'=>News::with('category')->limit(4)->get(),
+            'bigNews'=>News::with('category')->limit(3)->get(),
             'categories' => Category::with('news')->paginate(0)
         ]);
     }

@@ -17,17 +17,7 @@
         <div class="col-xl-12 mx-auto">
             <h6 class="mb-0 text-uppercase">Список новостей</h6>
             <hr/>
-{{--            @if( Session::has('success'))--}}
-{{--                <x-alert type="success" message="{{ session('success') }}"></x-alert>--}}
-{{--            @endif--}}
-{{--            @if( Session::has('error'))--}}
-{{--                <x-alert type="danger" message="{{ session('error') }}"></x-alert>--}}
-{{--            @endif--}}
-{{--            @if( $errors->any() )--}}
-{{--                @foreach( $errors as $error )--}}
-{{--                    <x-alert type="error" message="{{ $error }}"></x-alert>--}}
-{{--                @endforeach--}}
-{{--            @endif--}}
+            @include('inc.messages')
             <div class="card">
                 <div class="card-body">
                     <table class="table mb-0">
@@ -35,6 +25,7 @@
                         <tr>
                             <th class="text-center" scope="col">#ID</th>
                             <th class="text-center" scope="col">Категория</th>
+                            <th class="text-center" scope="col">Автор</th>
                             <th class="text-center" scope="col">Заголовок</th>
                             <th class="text-center" scope="col">Описание</th>
                             <th class="text-center" scope="col">Статус</th>
@@ -47,6 +38,7 @@
                             <tr>
                                 <td class="text-center">{{ $news->id }}</td>
                                 <td class="text-center">{{ $news->category->title }}</td>
+                                <td class="text-center">{{ $news->author }}</td>
                                 <td class="text-center">{{ $news->title }}</td>
                                 <td>{{ $news->description }}</td>
                                 <td class="text-center">{{ $news->status }}</td>

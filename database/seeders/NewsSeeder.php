@@ -30,10 +30,8 @@ class NewsSeeder extends Seeder
                 'title' => $faker->sentence(rand(3, 5)),
                 'author' => $faker->userName(),
                 'image' => $faker->imageUrl(376, 299),
-                'big_image' => $faker->imageUrl(620, 519),
                 'status' => $statusList[mt_rand(0, 2)],
                 'description' => $faker->text(100),
-                'thumb_image'=>$faker->imageUrl(270, 257)
             ];
         }
         return $data;

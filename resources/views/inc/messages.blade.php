@@ -1,9 +1,5 @@
-@if( Session::has('success') )
-    <x-alert type="success" :messsge="{{ Session::get('success') }}"></x-alert>
-@endif
-
-@if( Session::has('error') )
-    <x-alert type="danger" :messsge="{{ Session::get('error') }}"></x-alert>
+@if( session('success') )
+    <x-alert type="success" messsge="{{ session('success') }}"></x-alert>
 @endif
 
 @if( $errors->any() )

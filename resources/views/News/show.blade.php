@@ -31,7 +31,7 @@
                                 <h3>Об авторе</h3>
                                 <div class="author">
                                     <i><img src="" alt="Author"/></i>
-                                    <h4>Tommy Walker</h4>
+                                    <h4>{{ $news->author }}</h4>
                                     <ul>
                                         <li><a href="#" class="fb" title="Facebook"><i class="fa fa-vk"></i></a>
                                         </li>

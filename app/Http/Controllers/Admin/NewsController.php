@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\News\CreateRequest;
+use App\Http\Requests\News\EditRequest;
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Contracts\Foundation\Application;
@@ -41,18 +43,17 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CreateRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(CreateRequest $request): RedirectResponse
     {
-        $news = News::create($request->only(['category_id', 'title', 'image',
-            'author', 'status', 'description']));
+        $news = News::create($request->validated());
         if ($news) {
             return redirect()->route('admin.news.index')
-                ->with('success', 'Новость успешно создана');
+                ->with('success', __('messages.admin.news.create.success'));
         }
-        return back()->with('error', 'Не удалось создать новость');
+        return back()->with('error', __('messages.admin.news.create.fail'));
 
     }
 
@@ -84,20 +85,19 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param EditRequest $request
      * @param News $news
      * @return RedirectResponse
      */
-    public function update(Request $request, News $news): RedirectResponse
+    public function update(EditRequest $request, News $news): RedirectResponse
     {
-        $status = $news->fill($request->only(['category_id', 'title',
-            'image', 'author', 'status', 'description']))
+        $status = $news->fill($request->validated())
             ->save();
         if ($status) {
             return redirect()->route('admin.news.index')
-                ->with('success', 'Новость успешно обновлена');
+                ->with('success', __('messages.admin.news.update.success'));
         }
-        return back()->with('error', 'Не удалось обновить новость');
+        return back()->with('error', __('messages.admin.news.update.fail'));
     }
 
     /**
@@ -112,9 +112,9 @@ class NewsController extends Controller
         $status = $news->delete();
         if ($status) {
             return redirect()->route('admin.news.index')
-                ->with('success', 'Новость успешно удалена');
+                ->with('success', __('messages.admin.news.destroy.success'));
         }
         return redirect()->route('admin.news.index')
-            ->with('error', 'Не удалось удалить новость');
+            ->with('error', __('messages.admin.news.destroy.fail'));
     }
 }

@@ -16,17 +16,7 @@
         <div class="col-xl-12 mx-auto">
             <h6 class="mb-0 text-uppercase">Список категорий</h6>
             <hr/>
-{{--            @if( Session::has('success'))--}}
-{{--                <x-alert type="success" :message="{{ session('success') }}"></x-alert>--}}
-{{--            @endif--}}
-{{--            @if( Session::has('error'))--}}
-{{--                <x-alert type="danger" :message="{{ session('error') }}"></x-alert>--}}
-{{--            @endif--}}
-{{--            @if( $errors->any() )--}}
-{{--                @foreach( $errors as $error )--}}
-{{--                    <x-alert type="error" :message="{{ $error }}"></x-alert>--}}
-{{--                @endforeach--}}
-{{--            @endif--}}
+            @include('inc.messages')
             <div class="card">
                 <div class="card-body">
                     <table class="table mb-0">
