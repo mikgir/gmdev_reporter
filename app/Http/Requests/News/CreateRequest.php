@@ -3,6 +3,7 @@
 namespace App\Http\Requests\News;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class CreateRequest extends FormRequest
 {
@@ -21,6 +22,9 @@ class CreateRequest extends FormRequest
      *
      * @return array
      */
+    #[ArrayShape(['category_id' => "string[]", 'title' => "string[]",
+        'image' => "string[]", 'author' => "string[]",
+        'status' => "string[]", 'description' => "string[]"])]
     public function rules(): array
     {
         return [

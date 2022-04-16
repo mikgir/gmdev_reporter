@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\News;
+namespace App\Http\Requests\Source;
 
 use Illuminate\Foundation\Http\FormRequest;
 use JetBrains\PhpStorm\ArrayShape;
 
-class EditRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class EditRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,20 +23,18 @@ class EditRequest extends FormRequest
      * @return array
      */
     #[ArrayShape(['category_id' => "string[]", 'title' => "string[]",
-        'image' => "string[]", 'author' => "string[]",
-        'status' => "string[]", 'description' => "string[]"])]
+        'link' => "string[]", 'description' => "string[]",
+        'status' => "string[]"])]
     public function rules(): array
     {
         return [
-            'category_id' =>['required', 'integer', 'exists:news'],
+            'category_id' =>['required', 'integer', 'exists:sources'],
             'title'=>['required', 'string'],
-            'image'=>['nullable', 'string'],
-            'author'=>['nullable', 'string'],
+            'link'=>['required', 'string'],
+            'description'=>['required', 'string'],
             'status'=>['required', 'string', 'min:5', 'max:7'],
-            'description'=>['required', 'string']
         ];
     }
-
     /**
      * @return array
      */

@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Account\IndexController as AccountController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ParserController;
+use App\Http\Controllers\Admin\SourceController;
+use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\HomeController;
-use App\View\Components\Form\Customer;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,13 +36,38 @@ Route::get('/author/{id}', [AuthorController::class, 'show'])
     ->where('id', '\d+')
     ->name('author.show');
 
-
-//Admin routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::get('admin', AdminController::class)
-        ->name('index');
-    Route::resource('customer', Customer::class);
-    Route::resource('categories', CategoryController::class);
-    Route::resource('news', NewsController::class);
-    Route::resource('order', OrderController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
+        Route::get('/', AccountController::class)
+            ->name('index');
+        //Logout
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect()->route('home');
+        })->name('logout');
+    });
+    //Admin routes
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('/admin', AdminController::class)
+            ->name('index');
+        Route::resource('categories', CategoryController::class);
+        Route::resource('news', NewsController::class);
+        Route::resource('source', SourceController::class);
+        Route::get('parser', ParserController::class)
+            ->name('parser');
+    });
 });
+
+
+Auth::routes();
+// Social routes
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/auth/{network}/redirect', [SocialController::class, 'index'])
+        ->where('network', '\w+')
+        ->name('auth.redirect');
+    Route::get('/auth/{network}/callback', [SocialController::class, 'callback'])
+        ->where('network', '\w+')
+        ->name('auth.callback');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
