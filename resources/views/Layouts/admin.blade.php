@@ -68,6 +68,13 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.source.index') }}">
+                    <div class="parent-icon"><i class="bx bx-link"></i>
+                    </div>
+                    <div class="menu-title">Ресурсы</div>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <div class="parent-icon"><i class="bx bx-user-circle"></i>
                     </div>
@@ -110,7 +117,7 @@
                            data-toggle="dropdown">
                             <div class="media user-box align-items-center">
                                 <div class="media-body user-info">
-                                    <p class="user-name mb-0">Mik Gir</p>
+                                    <p class="user-name mb-0">{{ \Illuminate\Support\Facades\Auth::user()->name }}</p>
                                     <p class="designattion mb-0">Available</p>
                                 </div>
                                 <img src="https://via.placeholder.com/110x110" class="user-img" alt="user avatar">

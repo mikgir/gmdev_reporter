@@ -14,8 +14,13 @@ return new class extends Migration {
     {
         Schema::create('sources', function (Blueprint $table) {
             $table->id();
-            $table->string('source', 255);
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->cascadeOnDelete();
+            $table->string('title', 255);
             $table->string('link', 500);
+            $table->string('description', 500)
+                ->nullable();
             $table->timestamps();
         });
     }

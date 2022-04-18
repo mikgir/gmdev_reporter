@@ -15,13 +15,16 @@ class Source extends Model
 
     protected $fillable = [
         'category_id',
-        'source',
+        'title',
         'link',
-        'status'
+        'description',
     ];
 
 //    Relations
-
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
     public function news(): BelongsToMany
     {
         return $this->belongsToMany(News::class);
