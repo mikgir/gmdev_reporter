@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use UniSharp\LaravelFilemanager\Lfm;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +70,7 @@ Route::group(['middleware' => 'guest'], function () {
         ->where('network', '\w+')
         ->name('auth.callback');
 });
-
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    Lfm::routes();
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

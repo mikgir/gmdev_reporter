@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'home')
+@section('title', 'Репортер')
 @section('content')
     <main class="site-main">
         <!-- Slider Section -->
@@ -14,12 +14,16 @@
                                 <div class="col-md-6 col-sm-6 col-xs-6 big-post">
                                     <!-- Type Post -->
                                     <div class="type-post color-{{ $news->category_id }}">
-                                        <div class="entry-cover"><a href="{{ route('news.show', $news->id) }}">
-                                                <img src="{{ $news->image }}" style="width: 620px; height: 519px"
-                                                    alt="Post"/></a></div>
+                                        <div class="entry-cover">
+                                            <a href="{{ route('news.show', $news->id) }}">
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                     style="width: 620px; height: 519px"
+                                                    alt="Post"/>
+                                            </a>
+                                        </div>
                                         <div class="entry-content">
-                                            <div class="post-category"><a href="#"
-                                                                          title="{{ $news->category->title }}">{{ $news->category->title }}</a>
+                                            <div class="post-category">
+                                                <a href="#" title="{{ $news->category->title }}">{{ $news->category->title }}</a>
                                             </div>
                                             <h3 class="entry-title"><a href="#">{{ $news->title }}</a></h3>
                                             <p>{{ $news->description }}</p>
@@ -41,7 +45,8 @@
                                         <div class="type-post color-{{ $news->category_id }}">
                                             <div class="entry-cover">
                                                 <a href="{{ route('news.show', $news->id) }}">
-                                                    <img src="{{ $news->image }}" style="width: 270px; height: 257px" alt="Post"/>
+                                                    <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                         style="width: 270px; height: 257px" alt="Post"/>
                                                 </a>
                                             </div>
                                             <div class="entry-content">
@@ -105,7 +110,8 @@
                                             <!-- Type Post -->
                                             <div class="type-post larg-post color-{{ $news->category_id }}">
                                                 <div class="entry-cover"><a href="#">
-                                                        <img src="{{ $news->image }}" style="width: 376px; height: 400px" alt="Post"/>
+                                                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                             style="width: 376px; height: 400px" alt="Post"/>
                                                     </a>
                                                 </div>
                                                 <div class="entry-content">
@@ -174,7 +180,8 @@
                                     <div class="type-post color-{{ $news->category_id }}">
                                         <div class="entry-cover">
                                             <a href="{{ route('news.show', $news->id) }}">
-                                                <img src="{{ $news->image }}" style="width: 100%" alt="Post"/>
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                     style="width: 100%" alt="Post"/>
                                             </a>
                                         </div>
                                         <div class="entry-content">

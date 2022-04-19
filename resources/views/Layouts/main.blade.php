@@ -41,6 +41,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW40y4kdsjsz714OVTvrw7woVCpD8EbLE"></script>
 <!-- Library - Theme JS -->
 <script src="{{ asset('js/functions.js') }}"></script>
+@stack('js')
 </body>
 </html>
 

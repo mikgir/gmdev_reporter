@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Contracts\ParserInterface;
+use App\Models\News;
+use Illuminate\Support\Facades\Storage;
 use Orchestra\Parser\Xml\Facade as Parser;
 
 class ParserService implements ParserInterface
@@ -20,12 +22,12 @@ class ParserService implements ParserInterface
     }
 
     /**
-     * @return array
+     * @return void
      */
-    public function getNews(): array
+    public function saveNews(): void
     {
         $xml = Parser::load( $this->url );
-        return $xml->parse([
+        $data = $xml->parse([
             'title' => [
                 'uses' => 'channel.title'
             ],
@@ -42,5 +44,24 @@ class ParserService implements ParserInterface
                 'uses' => 'channel.item[title,link,guid,description,pubDate]'
             ]
         ]);
+
+        foreach ($data['news'] as $item) {
+
+            $news = News::query()->firstOrNew(['title' => $item['title']]);
+
+            if ($news->id) {
+                continue;
+            } else {
+                $news = new News();
+                $news->title = $item['title'];
+                $news->link = $item['link'];
+                $news->guid = $item['guid'];
+                $news->description = $item['description'];
+                $news->pubDate = $item['pubDate'];
+
+                $news->save();
+            }
+        }
+
     }
 }

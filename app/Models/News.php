@@ -15,14 +15,13 @@ class News extends Model
     protected $table = 'news';
 
     protected $fillable = [
-        'category_id',
         'title',
         'status',
         'author',
         'image',
-        'thumb_image',
-        'big_image',
-        'description'
+        'description',
+        'guid',
+        'pubDate'
     ];
 
 //    Relations

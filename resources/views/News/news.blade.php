@@ -22,7 +22,7 @@
                                             <div class="type-post larg-post color-{{ $category->id }}">
                                                 <div class="entry-cover">
                                                     <a href="#">
-                                                        <img src="{{ $news->image }}"
+                                                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
                                                              style="width: 376px; height: 400px"
                                                              alt="Post"/>
                                                     </a>

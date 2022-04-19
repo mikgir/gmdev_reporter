@@ -11,7 +11,7 @@ interface ParserInterface
     public function setUrl(string $url): self;
 
     /**
-     * @return array
+     * @return void
      */
-    public function getNews(): array;
+    public function saveNews(): void;
 }

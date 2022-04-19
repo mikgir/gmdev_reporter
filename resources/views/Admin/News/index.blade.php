@@ -17,14 +17,14 @@
         <div class="col-xl-12 mx-auto">
             <h6 class="mb-0 text-uppercase">Список новостей</h6>
             <hr/>
-            @include('inc.messages')
+{{--            @include('inc.messages')--}}
             <div class="card">
                 <div class="card-body">
                     <table class="table mb-0">
                         <thead>
                         <tr>
                             <th class="text-center" scope="col">#ID</th>
-                            <th class="text-center" scope="col">Категория</th>
+{{--                            <th class="text-center" scope="col">Категория</th>--}}
                             <th class="text-center" scope="col">Автор</th>
                             <th class="text-center" scope="col">Заголовок</th>
                             <th class="text-center" scope="col">Описание</th>
@@ -37,7 +37,7 @@
                         @forelse( $newsList as $news )
                             <tr>
                                 <td class="text-center">{{ $news->id }}</td>
-                                <td class="text-center">{{ $news->category->title }}</td>
+{{--                                <td class="text-center">{{ $news->category->title }}</td>--}}
                                 <td class="text-center">{{ $news->author }}</td>
                                 <td class="text-center">{{ $news->title }}</td>
                                 <td>{{ $news->description }}</td>

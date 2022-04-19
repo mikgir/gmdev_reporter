@@ -184,6 +184,7 @@
 <script src="{{ asset('admin/js/index2.js') }}"></script>
 <!-- App JS -->
 <script src="{{ asset('admin/js/app.js') }}"></script>
+@yield('scripts')
 </body>
 
 </html>

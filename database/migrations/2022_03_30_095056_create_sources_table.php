@@ -14,13 +14,12 @@ return new class extends Migration {
     {
         Schema::create('sources', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')
-                ->constrained('categories')
-                ->cascadeOnDelete();
             $table->string('title', 255);
             $table->string('link', 500);
+            $table->string('image')->nullable();
             $table->string('description', 500)
                 ->nullable();
+            $table->string('status')->default('DRAFT');
             $table->timestamps();
         });
     }

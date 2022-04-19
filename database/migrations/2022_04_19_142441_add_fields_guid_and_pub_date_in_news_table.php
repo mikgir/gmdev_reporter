@@ -13,8 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('sources', function (Blueprint $table) {
-            $table->enum('status', ['ACTIVE', 'DRAFT', 'BLOCKED'])->default('DRAFT');
+        Schema::table('news', function (Blueprint $table) {
+            $table->string('link', 300)->nullable();
+            $table->string('guid', 300)->nullable();
+            $table->string('pubDate', 100)->nullable();
         });
     }
 
@@ -25,8 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('sources', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::table('news', function (Blueprint $table) {
+           $table->dropColumn('link', 'guid', 'pubDate');
         });
     }
 };
