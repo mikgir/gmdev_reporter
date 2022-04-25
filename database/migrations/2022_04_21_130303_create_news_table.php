@@ -15,14 +15,21 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255);
-            $table->enum('status', ['ACTIVE', 'DRAFT', 'BLOCKED'])->default('DRAFT');
-            $table->string('author')->nullable();
-            $table->string('image',255)->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('source_id')->default('0');
+            $table->string('title', 500);
+            $table->string('link', 300)->nullable();
+            $table->string('guid', 300)->nullable();
             $table->text('description')->nullable();
+            $table->string('pubDate', 100)->nullable();
             $table->timestamps();
 
-            $table->index('status');
+            $table->foreign('category_id')
+                ->references('id')->on('categories')
+                ->cascadeOnDelete();
+            $table->foreign('source_id')
+                ->references('id')->on('sources')
+                ->cascadeOnDelete();
         });
     }
 

@@ -1,5 +1,10 @@
 @extends('layouts.main')
 @section('title', 'Репортер')
+
+@section('middle-header')
+    <x-header-slider></x-header-slider>
+@endsection
+
 @section('content')
     <main class="site-main">
         <!-- Slider Section -->
@@ -16,14 +21,18 @@
                                     <div class="type-post color-{{ $news->category_id }}">
                                         <div class="entry-cover">
                                             <a href="{{ route('news.show', $news->id) }}">
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                <img src="https://imgholder.ru/376x299/8493a8/adb9ca&text=image&font=kelson&fz=21
+                                                        @if( !empty($news->image) )
+                                                {{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}
+                                                @endif"
                                                      style="width: 620px; height: 519px"
-                                                    alt="Post"/>
+                                                     alt="Post"/>
                                             </a>
                                         </div>
                                         <div class="entry-content">
                                             <div class="post-category">
-                                                <a href="#" title="{{ $news->category->title }}">{{ $news->category->title }}</a>
+                                                <a href="#"
+                                                   title="{{ $news->category->title }}">{{ $news->category->title }}</a>
                                             </div>
                                             <h3 class="entry-title"><a href="#">{{ $news->title }}</a></h3>
                                             <p>{{ $news->description }}</p>
@@ -45,7 +54,10 @@
                                         <div class="type-post color-{{ $news->category_id }}">
                                             <div class="entry-cover">
                                                 <a href="{{ route('news.show', $news->id) }}">
-                                                    <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                    <img src="https://imgholder.ru/376x299/8493a8/adb9ca&text=image&font=kelson&fz=21
+                                                        @if( !empty($news->image) )
+                                                    {{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}
+                                                    @endif"
                                                          style="width: 270px; height: 257px" alt="Post"/>
                                                 </a>
                                             </div>
@@ -110,7 +122,10 @@
                                             <!-- Type Post -->
                                             <div class="type-post larg-post color-{{ $news->category_id }}">
                                                 <div class="entry-cover"><a href="#">
-                                                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                        <img src="https://imgholder.ru/376x299/8493a8/adb9ca&text=image&font=kelson&fz=21
+                                                        @if( !empty($news->image) )
+                                                        {{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}
+                                                        @endif"
                                                              style="width: 376px; height: 400px" alt="Post"/>
                                                     </a>
                                                 </div>
@@ -180,7 +195,10 @@
                                     <div class="type-post color-{{ $news->category_id }}">
                                         <div class="entry-cover">
                                             <a href="{{ route('news.show', $news->id) }}">
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}"
+                                                <img src="https://imgholder.ru/376x299/8493a8/adb9ca&text=image&font=kelson&fz=21
+                                                        @if( !empty($news->image) )
+                                                {{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}
+                                                @endif"
                                                      style="width: 100%" alt="Post"/>
                                             </a>
                                         </div>

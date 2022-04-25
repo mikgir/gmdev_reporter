@@ -39,26 +39,9 @@
                 </div><!-- Row /- -->
             </div><!-- Container /- -->
         </div><!-- Top Header /- -->
-
-        <!-- Middle Header -->
-        <div class="container-fluid no-left-padding no-right-padding middle-header">
-            <!-- Container -->
-            <div class="container">
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-md-4 logo-block">
-                        <a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo"/></a>
-                    </div>
-                    <div class="col-md-8 add-block-banner">
-                        <a href="#"><img src="{{ asset('images/top-banner.jpg') }}" alt="Banner"/></a>
-                    </div>
-                </div><!-- Row /- -->
-            </div><!-- Container /- -->
-        </div><!-- Middle Header /- -->
-
     </div><!-- SidePanel /- -->
-
-    <!-- Ownavigation -->
+@yield('middle-header')
+<!-- Ownavigation -->
     <nav class="navbar ownavigation">
         <!-- Container -->
         <div class="container">
@@ -86,17 +69,19 @@
                            aria-expanded="false">Новости</a>
                         <i class="ddl-switch fa fa-angle-down"></i>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ route('news') }}">Спорт</a></li>
-                            <li><a href="{{ route('news') }}">Наука</a></li>
-                            <li><a href="{{ route('news') }}">Политика</a></li>
-                            <li><a href="{{ route('news') }}">Наука</a></li>
-                            <li><a href="{{ route('news') }}">Мир</a></li>
+                            @foreach($categories as $key => $category)
+                                <li>
+                                    <a href="{{ route('news') . '?page=' . $key+1 }}">{{ $category->title }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                     <li>
                         <a href="#" title="Contact Us">Контакты</a>
                     </li>
-                    <!-- Authentication Links -->
+                </ul>
+                <!-- Authentication Links -->
+                <ul class="nav navbar-nav right-topbar">
                     @guest
                         @if (Route::has('login'))
                             <li class="">
@@ -130,12 +115,6 @@
                         </li>
                     @endguest
                 </ul>
-            </div>
-            <div id="loginpanel" class="desktop-hide">
-                <div class="right" id="toggle">
-                    <a id="slideit" href="#slidepanel"><i class="fo-icons fa fa-inbox"></i></a>
-                    <a id="closeit" href="#slidepanel"><i class="fo-icons fa fa-close"></i></a>
-                </div>
             </div>
         </div><!-- Container /- -->
     </nav><!-- Ownavigation /- -->

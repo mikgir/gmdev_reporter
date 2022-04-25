@@ -7,6 +7,7 @@ use App\Http\Requests\News\CreateRequest;
 use App\Http\Requests\News\EditRequest;
 use App\Models\Category;
 use App\Models\News;
+use App\Models\Source;
 use App\Services\UploadService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -25,7 +26,7 @@ class NewsController extends Controller
     public function index(): View|Factory|Application
     {
         return view('admin.news.index', [
-            'newsList' => News::with('category')->paginate(5),
+            'newsList' => News::with('category', 'source')->paginate(5),
         ]);
     }
 
@@ -37,7 +38,8 @@ class NewsController extends Controller
     public function create(): View|Factory|Application
     {
         return view('admin.news.create', [
-//            'categories' => Category::all()
+            'categories' => Category::all(),
+            'sources' => Source::all()
         ]);
     }
 
@@ -74,7 +76,8 @@ class NewsController extends Controller
     {
         return view('admin.news.edit', [
             'news' => $news,
-//            'categories' => Category::all()
+            'categories' => Category::all(),
+            'sources' => Source::all()
         ]);
     }
 
@@ -88,7 +91,8 @@ class NewsController extends Controller
     {
         return view('admin.news.edit', [
             'news' => $news,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'sources' => Source::all()
         ]);
     }
 

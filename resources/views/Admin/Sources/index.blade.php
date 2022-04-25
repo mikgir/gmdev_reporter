@@ -17,7 +17,7 @@
         <div class="col-xl-12 mx-auto">
             <h6 class="mb-0 text-uppercase">Список источников</h6>
             <hr/>
-            @include('inc.messages')
+{{--            @include('inc.messages')--}}
             <div class="card">
                 <div class="card-body">
                     <table class="table mb-0">
@@ -26,9 +26,10 @@
                             <th class="text-center" scope="col">#ID</th>
                             <th class="text-center" scope="col">Logo</th>
                             <th class="text-center" scope="col">Наименование</th>
+                            <th class="text-center" scope="col">Категория</th>
                             <th class="text-center" scope="col">Описание</th>
+                            <th class="text-center" scope="col">ресурс ссылка</th>
                             <th class="text-center" scope="col">Ссылка</th>
-                            <th class="text-center" scope="col">Статус</th>
                             <th class="text-center" scope="col">дата ред.</th>
                             <th class="text-center" scope="col">Опции</th>
                         </tr>
@@ -39,12 +40,13 @@
                                 <td class="text-center">{{ $source->id }}</td>
                                 <td class="text-center">@if($source->image)<img src="{{ $source->image }}"
                                                              alt="logo"
-                                                             style="width: 100px; height: 50px">@endif
+                                                             style="width: 50px; height: 20px;">@endif
                                 </td>
                                 <td class="text-center">{{ $source->title }}</td>
-                                <td class="text-center">{{ $source->description }}</td>
-                                <td class="text-center">{{ $source->link }}</td>
-                                <td class="text-center">{{ $source->status }}</td>
+                                <td class="text-center">{{ $source->category->title }}</td>
+                                <td>{!! $source->description !!}</td>
+                                <td>{{ $source->source_link }}</td>
+                                <td>{{ $source->link }}</td>
                                 <td class="text-center">@if( $source->updated_at) {{ $source->updated_at->format('Y-m-d H:i') }}@endif</td>
                                 <td class="text-center">
                                    <button class="btn btn-xs btn-outline-secondary"><a href="{{ route('admin.source.edit', $source->id) }}" class="link" style="color: #0c675e"><i class="bx bx-refresh"></i></a></button>
@@ -61,7 +63,7 @@
                         </tbody>
                     </table>
                     <div class="pagination-sm">
-{{--                        {{ $sources->links() }}--}}
+                        {{ $sources->links() }}
                     </div>
                 </div>
             </div>

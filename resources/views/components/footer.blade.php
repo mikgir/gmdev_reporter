@@ -11,8 +11,10 @@
                 <div class="col-md-4 col-sm-8 col-xs-8">
                     <aside class="widget widget_about">
                         <h3 class="widget-title">О НАС</h3>
-                        <div class="logo-block"><a href="{{ route('home') }}"><img src="{{ asset('images/logo-2.png') }}"
-                                                                          alt="Logo"/></a></div>
+                        <div class="logo-block">
+                            <a href="{{ route('home') }}"><img src="{{ asset('images/logo-2.png') }}"
+                                                                          alt="Logo"/></a>
+                        </div>
                         <p>Reporter is one of the excellent magazine in the world.</p>
                     </aside>
                 </div><!-- Widget About /- -->

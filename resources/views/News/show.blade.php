@@ -1,5 +1,23 @@
 @extends('layouts.main')
 @section('title'){{ $news->title }}@endsection
+
+@section('middle-header')
+    <div class="container-fluid no-left-padding no-right-padding middle-header">
+        <!-- Container -->
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-md-4 logo-block">
+                    <a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}"
+                                                       alt="Logo"/></a>
+                </div>
+                <div class="col-md-8 add-block-banner">
+                </div>
+            </div><!-- Row /- -->
+        </div><!-- Container /- -->
+    </div><!-- Middle Header /- -->
+@endsection
+
 @section('content')
     <main class="site-main">
         <!-- Single Post -->
@@ -11,7 +29,11 @@
                     <div class="col-md-8 col-sm-6 col-xs-6 content-area">
                         <article class="type-post color-3">
                             <div class="entry-cover">
-                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}" alt="Post"
+                                <img src="https://imgholder.ru/376x299/8493a8/adb9ca&text=image&font=kelson&fz=21
+                                                        @if( !empty($news->image) )
+                                {{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}
+                                @endif"
+                                     alt="Post"
                                      style="width: 100%; height: auto"/>
                                 <div class="entry-header">
                                     <div class="post-category"><a href="#" title="Business">Business</a></div>
@@ -24,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="content-area">
-                                    <p class="font-35">{!! $news->description !!}</p>
+                                <p class="font-35">{!! $news->description !!}</p>
                             </div>
 
                             <!-- About Author -->
@@ -32,7 +54,7 @@
                                 <h3>Об авторе</h3>
                                 <div class="author">
                                     <i><img src="" alt="Author"/></i>
-                                    <h4>{{ $news->author }}</h4>
+                                    <h4>Author</h4>
                                     <ul>
                                         <li><a href="#" class="fb" title="Facebook"><i class="fa fa-vk"></i></a>
                                         </li>
@@ -109,7 +131,7 @@
                         <!-- Comment Form -->
                             <div id="respond" class="comment-respond">
                                 <h2 id="reply-title" class="comment-reply-title">Оставьте комментарий</h2>
-                                <x-form.comment action="{{ route('admin.news.store') }}" method="post"></x-form.comment>
+                                {{--                                <x-form.comment action="{{ route('admin.news.store') }}" method="post"></x-form.comment>--}}
                             </div><!-- Comment Form /- -->
                         </div><!-- Comment Area /- -->
                     </div><!-- Content Area /- -->

@@ -1,18 +1,18 @@
 /*----------
 	Theme Name: Max Reporter
 	Start Date : 17-Jan-2017
-	End Date : 
-	Last change: 
+	End Date :
+	Last change:
 	Version: 1.0
 	Assigned to:
 	Primary use:
-	
+
 ----------*/
 
 	/* [Layout] */
 
 /*----------
-	
+
 	## Font List
 		- Roboto : font-family: 'Roboto', sans-serif;
 		- Noto Serif : font-family: 'Noto Serif', serif;
@@ -23,12 +23,12 @@
 		- Montserrat : font-family: 'Montserrat', sans-serif;
 
 	## Global
-	
+
 		- Padding/Margin
 		- Section Padding
-		
-	## Site Header	
-	
+
+	## Site Header
+
 		- Navigation Menu
 			-- Nav Main
 			-- Nav Header
@@ -37,14 +37,14 @@
 			-- Nav Items
 			-- Nav Dropdown
 
-	
+
 	## Widgets
-	
+
 	## Responsive
 	- Min Width : 992px & Max Width 1200px
-	
+
 	- Min Width : 992px
-	
+
 		## Navigation Menu
 		- Nav Main
 		- Nav Header
@@ -52,19 +52,19 @@
 		- Nav Switch
 		- Nav Items
 		- Nav Dropdown
-	
-	* Responsive		
+
+	* Responsive
 		- min-width: 1200
 		- min-width: 992
 		- min-width: 768
 		- max-width: 1200
-		- min-width: 992 to max-width: 1199		
+		- min-width: 992 to max-width: 1199
 		- max-width: 991
 		- min-width: 768 to max-width: 991
 		- max-width: 767
 		- max-width: 639
 		- max-width: 479
-		
+
 ----------*/
 
 /* ## Global ******************************************* */
@@ -72,7 +72,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
-	color: #000;
+	color: #1d2226;
 	overflow-x: hidden;
 }
 img {
@@ -266,8 +266,8 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 }
 
 /* - SlidePanel */
-#slidepanel { 
-	display: block; 
+#slidepanel {
+	display: block;
 }
 #closeit,
 #toggle,
@@ -293,7 +293,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 
 /* - Nav Items */
 .ownavigation .navbar-nav li  a {
-	color: #232323;
+	color: #1d2226;
 	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 0.56px;
@@ -301,8 +301,8 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	word-wrap: break-word;
 	white-space: normal;
 }
-.ownavigation .navbar-nav > .active > a, 
-.ownavigation .navbar-nav > .active > a:focus, 
+.ownavigation .navbar-nav > .active > a,
+.ownavigation .navbar-nav > .active > a:focus,
 .ownavigation .navbar-nav > .active > a:hover,
 .ownavigation .navbar-nav li:hover > a,
 .ownavigation .navbar-nav li a:hover,
@@ -311,7 +311,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 }
 
 /* ## Responsive ************************************************************************************** */
-	
+
 /*----------------------------------------------------
 	* Responsive
 ------------------------------------------------------*/
@@ -328,7 +328,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	.desktop-hide {
 		display: none;
 	}
-	
+
 	/* ## Navigation Menu */
 	.nav_trans {
 		background: transparent;
@@ -356,8 +356,8 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 		margin-bottom: 20px;
 		position: relative;
 	}
-	.ownavigation .navbar-nav > .active > a, 
-	.ownavigation .navbar-nav > .active > a:focus, 
+	.ownavigation .navbar-nav > .active > a,
+	.ownavigation .navbar-nav > .active > a:focus,
 	.ownavigation .navbar-nav > .active > a:hover,
 	.ownavigation .navbar-nav li:hover > a,
 	.ownavigation .navbar-nav li a:hover {
@@ -405,11 +405,11 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 		visibility: visible;
 	}
 	.ownavigation ul > li > .dropdown-menu {
-		left: 0; 
+		left: 0;
 	}
 	.ownavigation .navbar-collapse > ul > li:last-child > .dropdown-menu,
 	.ownavigation .navbar-collapse > ul > li:nth-last-child(2) > .dropdown-menu {
-		right: 0; 
+		right: 0;
 	}
 	.ownavigation ul > li > .dropdown-menu,
 	.ownavigation ul > li .dropdown-menu ul,
@@ -485,7 +485,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 }
 
 /* - Min Width : 992px & Max Width 1200px */
-@media only screen and (min-width: 992px) and (max-width: 1200px) {	
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
 	.ownavigation .navbar-nav > li {
 		margin-left: 9px;
 		margin-right: 9px;
@@ -496,7 +496,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 /* - max-width: 991 */
 @media (max-width: 991px) {
 	/* - SlidePanel */
-	#slidepanel { 
+	#slidepanel {
 		display: none;
 		border-bottom: 1px solid #f97b25;
 	}
@@ -511,7 +511,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 		right: 110px;
 		text-align: center;
 		top: 14px;
-	}	
+	}
 	#slideit,
 	#closeit {
 		color: #fcb100;
@@ -524,7 +524,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	#closeit:hover {
 		color: #004586;
 	}
-	
+
 	.mobile-hide {
 		display: none;
 	}
@@ -541,8 +541,8 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	.ownavigation .navbar-header .navbar-brand {
 		padding-left: 0;
 		margin-left: 0;
-	}	
-	
+	}
+
 	/* - Nav Items */
 	.ownavigation .navbar-nav {
 		width: 100%;
@@ -559,7 +559,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 		-moz-transition: all 1s ease 0s;
 		-o-transition: all 1s ease 0s;
 		transition: all 1s ease 0s;
-	}	
+	}
 	.ownavigation .navbar-nav > li.active a {
 		color: #fcb100;
 	}
@@ -567,7 +567,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 	.ownavigation .navbar-nav  li  a:hover {
 		color: #fcb100;
 	}
-	
+
 	/* - Nav Toggle */
 	.ownavigation .navbar-header {
 		float: none;
@@ -580,20 +580,20 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 		margin: 30px 0 27px;
 		padding: 6px 5px;
 	}
-	.ownavigation .navbar-toggle .icon-bar { 
-		background-color: #fff; 
-	}	
+	.ownavigation .navbar-toggle .icon-bar {
+		background-color: #fff;
+	}
 	.ownavigation .navbar-collapse {
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.ownavigation .navbar-collapse.collapse { 
-		display: none !important; 
+	.ownavigation .navbar-collapse.collapse {
+		display: none !important;
 	}
-	.ownavigation .collapse.in{ 
-		display:block !important; 
-	}	
-	
+	.ownavigation .collapse.in{
+		display:block !important;
+	}
+
 	/* - Nav Switch */
 	.ownavigation .ddl-switch {
 		background-color: #fcb100;
@@ -630,7 +630,7 @@ h1,h2,h3,h4,h5,h6,p,a,li,span {
 		margin-bottom: 15px;
 	}
 	.ownavigation .navbar-nav li .dropdown-menu > li > a {
-		color: #232323;
+		color: #1d2226;
 		padding-left: 0;
 		padding-right: 0;
 		padding-top: 6px;

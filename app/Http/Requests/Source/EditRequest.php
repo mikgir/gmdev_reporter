@@ -22,17 +22,19 @@ class EditRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['title' => "string[]",
-        'link' => "string[]", 'image' => "image[]", 'description' => "string[]",
-        'status' => "string[]"])]
+
+    #[ArrayShape(['category_id' => "string[]", 'source_link' => "string[]",
+        'title' => "string[]", 'link' => "string[]", 'image' => "string[]",
+        'description' => "string[]"])]
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string'],
-            'link' => ['required', 'string'],
-            'image' => ['nullable', 'image:jpg,jpeg,png,gif'],
-            'description' => ['required', 'string'],
-            'status' => ['required', 'string', 'min:5', 'max:7'],
+            'category_id'=>['required', 'integer'],
+            'source_link'=>['required', 'string'],
+            'title'=>['nullable', 'string'],
+            'link'=>['nullable', 'string'],
+            'image'=>['nullable', 'image:jpg,jpeg,png,gif'],
+            'description'=>['nullable', 'string'],
         ];
     }
 

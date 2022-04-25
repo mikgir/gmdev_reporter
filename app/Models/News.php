@@ -15,24 +15,24 @@ class News extends Model
     protected $table = 'news';
 
     protected $fillable = [
+        'category_id',
+        'source_id',
         'title',
-        'status',
-        'author',
+        'link',
+        'guid',
         'image',
         'description',
-        'guid',
         'pubDate'
     ];
 
 //    Relations
 
+    public function source(): BelongsTo
+    {
+        return $this->belongsTo(Source::class);
+    }
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function source(): BelongsToMany
-    {
-        return $this->belongsToMany(Source::class);
     }
 }

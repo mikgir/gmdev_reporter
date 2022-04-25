@@ -16,7 +16,7 @@
         <div class="col-xl-12 mx-auto">
             <h6 class="mb-0 text-uppercase">Список категорий</h6>
             <hr/>
-            @include('inc.messages')
+{{--            @include('inc.messages')--}}
             <div class="card">
                 <div class="card-body">
                     <table class="table mb-0">

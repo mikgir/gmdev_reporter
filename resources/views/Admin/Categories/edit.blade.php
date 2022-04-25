@@ -21,7 +21,7 @@
                 <h4 class="mb-0">Редактировать категорию</h4>
             </div>
             <hr/>
-           @include('inc.messages')
+{{--           @include('inc.messages')--}}
             <form action="{{ route('admin.categories.update', [ 'category' => $category]) }}" method="post">
                 @csrf
                 @method('put')

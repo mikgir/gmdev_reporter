@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Contracts\ParserInterface;
 use App\Models\News;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Source;
 use Orchestra\Parser\Xml\Facade as Parser;
 
 class ParserService implements ParserInterface
@@ -26,7 +26,7 @@ class ParserService implements ParserInterface
      */
     public function saveNews(): void
     {
-        $xml = Parser::load( $this->url );
+        $xml = Parser::load($this->url);
         $data = $xml->parse([
             'title' => [
                 'uses' => 'channel.title'
@@ -45,6 +45,17 @@ class ParserService implements ParserInterface
             ]
         ]);
 
+            $source = Source::query()->firstOrNew(['source_link' => $this->url]);
+            if (!$source->link){
+                $source->title = $data['title'];
+                $source->link = $data['link'];
+                $source->image = $data['image'];
+                $source->description = $data['description'];
+
+                $source->save();
+            }
+
+
         foreach ($data['news'] as $item) {
 
             $news = News::query()->firstOrNew(['title' => $item['title']]);
@@ -53,6 +64,8 @@ class ParserService implements ParserInterface
                 continue;
             } else {
                 $news = new News();
+                $news->category_id = $source->category_id;
+                $news->source_id = $source->id;
                 $news->title = $item['title'];
                 $news->link = $item['link'];
                 $news->guid = $item['guid'];

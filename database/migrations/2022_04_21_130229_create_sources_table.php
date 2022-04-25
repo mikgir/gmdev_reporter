@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -14,13 +15,16 @@ return new class extends Migration {
     {
         Schema::create('sources', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255);
-            $table->string('link', 500);
+            $table->unsignedBigInteger('category_id');
+            $table->string('source_link')->default('author');
+            $table->string('link')->nullable();
             $table->string('image')->nullable();
-            $table->string('description', 500)
-                ->nullable();
-            $table->string('status')->default('DRAFT');
+            $table->string('description')->nullable();
             $table->timestamps();
+
+            $table->foreign('category_id')
+                ->references('id')->on('categories')
+                ->cascadeOnDelete();
         });
     }
 

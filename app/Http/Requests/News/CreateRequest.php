@@ -22,20 +22,18 @@ class CreateRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(shape: ['title' => "string[]",
-        'image' => "string[]", 'author' => "string[]",
-        'status' => "string[]", 'description' => "string[]", 'link'=>"string[]",
-        'guid'=>"string[]",
-        'pubDate'=>"string[]"])]
+
+    #[ArrayShape(['category_id' => "string[]", 'source_id' => "string[]",
+        'title' => "string[]", 'image' => "string[]", 'description' => "string[]",
+        'link' => "string[]", 'guid' => "string[]", 'pubDate' => "string[]"])]
     public function rules(): array
     {
         return [
-//            'category_id' =>['required', 'integer', 'exists:news'],
+            'category_id'=>['required', 'integer'],
+            'source_id' =>['required', 'integer', 'exists:news'],
             'title'=>['required', 'string'],
             'image'=>['nullable', 'image:jpg.jpeg,png,gif'],
-            'author'=>['required', 'string'],
-            'status'=>['required', 'string', 'min:5', 'max:7'],
-            'description'=>['required', 'string'],
+            'description'=>['nullable', 'string'],
             'link'=>['nullable', 'string'],
             'guid'=>['nullable', 'string'],
             'pubDate'=>['nullable', 'string']

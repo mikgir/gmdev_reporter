@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('source_news', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('source_id');
-            $table->unsignedBigInteger('news_id');
-
-            $table->foreign('source_id')->references('id')->on('sources');
-            $table->foreign('news_id')->references('id')->on('news');
+            $table->string('title');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('source_news');
+        Schema::dropIfExists('categories');
     }
 };

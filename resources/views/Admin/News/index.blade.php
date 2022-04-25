@@ -24,11 +24,11 @@
                         <thead>
                         <tr>
                             <th class="text-center" scope="col">#ID</th>
-{{--                            <th class="text-center" scope="col">Категория</th>--}}
-                            <th class="text-center" scope="col">Автор</th>
+                            <th class="text-center" scope="col">Категория</th>
+                            <th class="text-center" scope="col">Ресурс</th>
+                            <th class="text-center" scope="col">Медиа</th>
                             <th class="text-center" scope="col">Заголовок</th>
                             <th class="text-center" scope="col">Описание</th>
-                            <th class="text-center" scope="col">Статус</th>
                             <th class="text-center" scope="col">дата ред.</th>
                             <th class="text-center" scope="col">Опции</th>
                         </tr>
@@ -37,11 +37,14 @@
                         @forelse( $newsList as $news )
                             <tr>
                                 <td class="text-center">{{ $news->id }}</td>
-{{--                                <td class="text-center">{{ $news->category->title }}</td>--}}
-                                <td class="text-center">{{ $news->author }}</td>
+                                <td class="text-center">{{ $news->category->title }}</td>
+                                <td class="text-center">{{ $news->source->title }}</td>
+                                <td class="text-center">@if( $news->image)<img src="{{ $source->image }}"
+                                                                                alt="logo"
+                                                                                style="width: 75px; height: 75px;">@endif
+                                </td>
                                 <td class="text-center">{{ $news->title }}</td>
                                 <td>{{ $news->description }}</td>
-                                <td class="text-center">{{ $news->status }}</td>
                                 <td class="text-center">@if( $news->updated_at) {{ $news->updated_at->format('Y-m-d H:i') }}@endif</td>
                                 <td class="text-center">
                                    <button class="btn btn-xs btn-outline-secondary"><a href="{{ route('admin.news.edit', $news->id) }}" class="link" style="color: #0c675e"><i class="bx bx-refresh"></i></a></button>

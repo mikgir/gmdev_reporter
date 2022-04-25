@@ -1,5 +1,23 @@
 @extends('layouts.main')
 @section('title', 'Вход')
+
+@section('middle-header')
+    <div class="container-fluid no-left-padding no-right-padding middle-header">
+        <!-- Container -->
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-md-4 logo-block">
+                    <a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}"
+                                                       alt="Logo"/></a>
+                </div>
+                <div class="col-md-8 add-block-banner">
+                </div>
+            </div><!-- Row /- -->
+        </div><!-- Container /- -->
+    </div><!-- Middle Header /- -->
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center h-100">
@@ -13,9 +31,11 @@
                         <div class="contact-form text-center">
                             <h4>Авторизоваться через <br> социальные сети</h4>
                             <div class="form-group">
-                                <a href="{{ route('auth.redirect', ['network'=>'vkontakte']) }}" style="width: 30px; height: 30px; font-size: large; margin: 5px"><i
-                                        class="fa fa-vk" ></i></a>
-                                <a href="{{ route('auth.redirect', ['network'=>'github']) }}" style="width: 30px; height: 30px; font-size: large; margin: 5px"><i
+                                <a href="{{ route('auth.redirect', ['network'=>'vkontakte']) }}"
+                                   style="width: 30px; height: 30px; font-size: large; margin: 5px"><i
+                                        class="fa fa-vk"></i></a>
+                                <a href="{{ route('auth.redirect', ['network'=>'github']) }}"
+                                   style="width: 30px; height: 30px; font-size: large; margin: 5px"><i
                                         class="fa fa-github"></i></a>
                             </div>
                         </div>

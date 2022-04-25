@@ -1,5 +1,23 @@
 @extends('layouts.main')
 @section('title', 'Аккаунт')
+
+@section('middle-header')
+    <div class="container-fluid no-left-padding no-right-padding middle-header">
+        <!-- Container -->
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-md-4 logo-block">
+                    <a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}"
+                                                       alt="Logo"/></a>
+                </div>
+                <div class="col-md-8 add-block-banner">
+                </div>
+            </div><!-- Row /- -->
+        </div><!-- Container /- -->
+    </div><!-- Middle Header /- -->
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
