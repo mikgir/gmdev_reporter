@@ -11,7 +11,8 @@
                     <div class="col-md-8 col-sm-6 col-xs-6 content-area">
                         <article class="type-post color-3">
                             <div class="entry-cover">
-                                <img src="{{ $news->image }}" alt="Post" style="width: 100%; height: auto"/>
+                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($news->image) }}" alt="Post"
+                                     style="width: 100%; height: auto"/>
                                 <div class="entry-header">
                                     <div class="post-category"><a href="#" title="Business">Business</a></div>
                                     <h3 class="entry-title">{{ $news->title}}</h3>

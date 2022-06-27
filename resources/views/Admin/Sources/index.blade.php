@@ -24,7 +24,7 @@
                         <thead>
                         <tr>
                             <th class="text-center" scope="col">#ID</th>
-                            <th class="text-center" scope="col">Категория</th>
+                            <th class="text-center" scope="col">Logo</th>
                             <th class="text-center" scope="col">Наименование</th>
                             <th class="text-center" scope="col">Описание</th>
                             <th class="text-center" scope="col">Ссылка</th>
@@ -37,9 +37,12 @@
                         @forelse( $sources as $source )
                             <tr>
                                 <td class="text-center">{{ $source->id }}</td>
-                                <td class="text-center">{{ $source->category->title }}</td>
+                                <td class="text-center">@if($source->image)<img src="{{ $source->image }}"
+                                                             alt="logo"
+                                                             style="width: 100px; height: 50px">@endif
+                                </td>
                                 <td class="text-center">{{ $source->title }}</td>
-                                <td>{{ $source->description }}</td>
+                                <td class="text-center">{{ $source->description }}</td>
                                 <td class="text-center">{{ $source->link }}</td>
                                 <td class="text-center">{{ $source->status }}</td>
                                 <td class="text-center">@if( $source->updated_at) {{ $source->updated_at->format('Y-m-d H:i') }}@endif</td>
@@ -58,7 +61,7 @@
                         </tbody>
                     </table>
                     <div class="pagination-sm">
-                        {{ $sources->links() }}
+{{--                        {{ $sources->links() }}--}}
                     </div>
                 </div>
             </div>

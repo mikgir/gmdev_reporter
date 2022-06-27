@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Source extends Model
@@ -14,17 +13,15 @@ class Source extends Model
     protected $table = 'sources';
 
     protected $fillable = [
-        'category_id',
         'title',
         'link',
+        'image',
         'description',
+        'status'
     ];
 
 //    Relations
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
-    }
+
     public function news(): BelongsToMany
     {
         return $this->belongsToMany(News::class);

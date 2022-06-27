@@ -14,7 +14,7 @@ class CreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,15 +22,15 @@ class CreateRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['category_id' => "string[]", 'title' => "string[]",
-        'link' => "string[]", 'description' => "string[]",
-        'status' => "string[]"])]
+    #[ArrayShape(shape: array('title' => "string[]",
+        'link' => "string[]", 'image' => "image[]", 'description' => "string[]",
+        'status' => "string[]"))]
     public function rules(): array
     {
         return [
-            'category_id' =>['required', 'integer', 'exists:sources'],
             'title'=>['required', 'string'],
             'link'=>['required', 'string'],
+            'image'=>['nullable', 'image:jpg,jpeg,png,gif'],
             'description'=>['required', 'string'],
             'status'=>['required', 'string', 'min:5', 'max:7'],
         ];

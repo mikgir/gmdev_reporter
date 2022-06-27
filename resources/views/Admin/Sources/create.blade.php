@@ -19,22 +19,9 @@
                 <h4 class="mb-0">Добавить источник</h4>
             </div>
             <hr/>
-            @include('inc.messages')
-            <form action="{{ route('admin.source.store') }}" method="post">
+{{--            @include('inc.messages')--}}
+            <form action="{{ route('admin.source.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @error('category_id')<span class="error-section">{{ $message }}</span>@enderror
-                <div class="input-group-prepend mt-3 d-flex">
-                    <label class="input-group" for="status">
-                        <div class="input-group-prepend"><span class="input-group-text"
-                                                               style="width: 150px">Категория</span>
-                        </div>
-                        <select class="form-control @if( $errors->has('category_id') ) border-danger @endif" name="category_id" id="category_id">
-                            @foreach( $categories as $category)
-                            <option value="{{ $category->id }}" @if( $category->id === old('category_id')) selected @endif>{{ $category->title }}</option>
-                            @endforeach
-                        </select>
-                    </label>
-                </div>
                 @error('image')<span class="error-section">{{ $message }}</span>@enderror
                 <div class="input-group mb-3">
                     <div class="input-group-prepend"><span class="input-group-text" style="width: 150px"
@@ -51,13 +38,21 @@
                     <input type="text" class="form-control @if( $errors->has('title') ) border-danger @endif" placeholder="Наименование" aria-label="title"
                            aria-describedby="basic-addon1" name="title" id="title" value="{{ old('title') }}">
                 </div>
+                @error('link')<span class="error-section">{{ $message }}</span>@enderror
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend"><span class="input-group-text" style="width: 150px"
+                                                           id="basic-addon1">Ссылка</span>
+                    </div>
+                    <input type="text" class="form-control @if( $errors->has('link') ) border-danger @endif" placeholder="ссылка" aria-label="link"
+                           aria-describedby="basic-addon1" name="link" id="link" value="{{ old('link') }}">
+                </div>
                 @error('description')<span class="error-section">{{ $message }}</span>@enderror
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text"
                                                            style="width: 150px">Текст</span>
                     </div>
                     <textarea class="form-control @if( $errors->has('description') ) border-danger @endif" aria-label="description" rows="10" name="description"
-                              id="description"></textarea>
+                              id="description">{!! old('description') !!}</textarea>
                 </div>
                 @error('status')<span class="error-section">{{ $message }}</span>@enderror
                 <div class="input-group mt-3 d-flex">

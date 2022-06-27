@@ -17,6 +17,10 @@ class CategorySeeder extends Seeder
     {
         $data=[
             [
+                'title'=>'Черновик',
+                'description'=>'Черновик для парсинга'
+            ],
+            [
                 'title'=>'Политика',
                 'description'=>'Новости политики'
             ],

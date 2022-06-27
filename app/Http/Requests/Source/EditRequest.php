@@ -14,7 +14,7 @@ class EditRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,19 +22,20 @@ class EditRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['category_id' => "string[]", 'title' => "string[]",
-        'link' => "string[]", 'description' => "string[]",
+    #[ArrayShape(['title' => "string[]",
+        'link' => "string[]", 'image' => "image[]", 'description' => "string[]",
         'status' => "string[]"])]
     public function rules(): array
     {
         return [
-            'category_id' =>['required', 'integer', 'exists:sources'],
-            'title'=>['required', 'string'],
-            'link'=>['required', 'string'],
-            'description'=>['required', 'string'],
-            'status'=>['required', 'string', 'min:5', 'max:7'],
+            'title' => ['required', 'string'],
+            'link' => ['required', 'string'],
+            'image' => ['nullable', 'image:jpg,jpeg,png,gif'],
+            'description' => ['required', 'string'],
+            'status' => ['required', 'string', 'min:5', 'max:7'],
         ];
     }
+
     /**
      * @return array
      */

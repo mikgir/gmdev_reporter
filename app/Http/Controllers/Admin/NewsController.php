@@ -7,6 +7,7 @@ use App\Http\Requests\News\CreateRequest;
 use App\Http\Requests\News\EditRequest;
 use App\Models\Category;
 use App\Models\News;
+use App\Services\UploadService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -36,7 +37,7 @@ class NewsController extends Controller
     public function create(): View|Factory|Application
     {
         return view('admin.news.create', [
-            'categories' => Category::all()
+//            'categories' => Category::all()
         ]);
     }
 
@@ -48,7 +49,13 @@ class NewsController extends Controller
      */
     public function store(CreateRequest $request): RedirectResponse
     {
-        $news = News::create($request->validated());
+        $validated = $request->validated();
+        $service = app(UploadService::class);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $service->uploadFile($request->file('image'));
+        }
+        $news = News::create($validated);
         if ($news) {
             return redirect()->route('admin.news.index')
                 ->with('success', __('messages.admin.news.create.success'));
@@ -57,16 +64,19 @@ class NewsController extends Controller
 
     }
 
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show($id)
-//    {
-//        //
-//    }
+    /**
+     * Display the specified resource.
+     *
+     * @param News $news
+     * @return Application|Factory|View
+     */
+    public function show(News $news): View|Factory|Application
+    {
+        return view('admin.news.edit', [
+            'news' => $news,
+//            'categories' => Category::all()
+        ]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -91,7 +101,13 @@ class NewsController extends Controller
      */
     public function update(EditRequest $request, News $news): RedirectResponse
     {
-        $status = $news->fill($request->validated())
+        $validated = $request->validated();
+        $service = app(UploadService::class);
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $service->uploadFile($request->file('image'));
+        }
+        $status = $news->fill($validated)
             ->save();
         if ($status) {
             return redirect()->route('admin.news.index')

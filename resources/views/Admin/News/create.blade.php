@@ -20,21 +20,21 @@
             </div>
             <hr/>
             @include('inc.messages')
-            <form action="{{ route('admin.news.store') }}" method="post">
+            <form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @error('category_id')<span class="error-section">{{ $message }}</span>@enderror
-                <div class="input-group-prepend mt-3 d-flex">
-                    <label class="input-group" for="status">
-                        <div class="input-group-prepend"><span class="input-group-text"
-                                                               style="width: 150px">Категория</span>
-                        </div>
-                        <select class="form-control @if( $errors->has('category_id') ) border-danger @endif" name="category_id" id="category_id">
-                            @foreach( $categories as $category)
-                            <option value="{{ $category->id }}" @if( $category->id === old('category_id')) selected @endif>{{ $category->title }}</option>
-                            @endforeach
-                        </select>
-                    </label>
-                </div>
+{{--                @error('category_id')<span class="error-section">{{ $message }}</span>@enderror--}}
+{{--                <div class="input-group-prepend mt-3 d-flex">--}}
+{{--                    <label class="input-group" for="status">--}}
+{{--                        <div class="input-group-prepend"><span class="input-group-text"--}}
+{{--                                                               style="width: 150px">Категория</span>--}}
+{{--                        </div>--}}
+{{--                        <select class="form-control @if( $errors->has('category_id') ) border-danger @endif" name="category_id" id="category_id">--}}
+{{--                            @foreach( $categories as $category)--}}
+{{--                            <option value="{{ $category->id }}" @if( $category->id === old('category_id')) selected @endif>{{ $category->title }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </label>--}}
+{{--                </div>--}}
                 @error('image')<span class="error-section">{{ $message }}</span>@enderror
                 <div class="input-group mb-3">
                     <div class="input-group-prepend"><span class="input-group-text" style="width: 150px"
